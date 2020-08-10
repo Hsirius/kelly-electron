@@ -1,29 +1,29 @@
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
+  parser: "babel-eslint",
   parserOptions: {
-    sourceType: 'module'
+    sourceType: "module",
   },
   env: {
     browser: true,
-    node: true
+    node: true,
   },
-  extends: 'airbnb-base',
+  extends: "airbnb-base",
   globals: {
-    __static: true
+    __static: true,
   },
-  plugins: [
-    'html'
-  ],
-  'rules': {
-    'global-require': 0,
-    'import/no-unresolved': 0,
-    'no-param-reassign': 0,
-    'no-shadow': 0,
-    'import/extensions': 0,
-    'import/newline-after-import': 0,
-    'no-multi-assign': 0,
+  plugins: ["html"],
+  rules: {
+    "global-require": 0,
+    "import/no-unresolved": 0,
+    "no-param-reassign": 0,
+    "no-shadow": 0,
+    "import/extensions": 0,
+    "import/newline-after-import": 0,
+    "no-multi-assign": 0,
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
-  }
-}
+    "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
+    quotes: [1, "double"], //引号类型
+    "no-underscore-dangle": 0,
+  },
+};

@@ -1,15 +1,29 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <div class="left-bar"><left-content /></div>
+    <div class="right-bar">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'y',
-  };
+import LeftContent from "./pages/LeftBar/LeftContent";
+export default {
+  name: "kelly",
+  components: { LeftContent },
+};
 </script>
 
-<style>
-  /* CSS */
+<style lang="scss" scoped>
+#app {
+  display: flex;
+  flex-flow: row nowrap;
+  .left-bar {
+    width: 30%;
+  }
+  .right-bar {
+    flex: 1;
+  }
+}
 </style>
