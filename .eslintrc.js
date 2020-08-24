@@ -25,5 +25,7 @@ module.exports = {
     "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
     quotes: [1, "double"], //引号类型
     "no-underscore-dangle": 0,
+    "arrow-parens": 0,
+    "object-curly-newline": 0,
   },
 };

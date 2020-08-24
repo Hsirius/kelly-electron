@@ -3,7 +3,9 @@ import axios from "axios";
 import ElementUI from "element-ui";
 
 import "element-ui/lib/theme-chalk/index.css";
-import "./assets/reset.scss";
+import "font-awesome/css/font-awesome.css";
+
+import "./assets/css/reset.scss";
 import App from "./App";
 import router from "./router";
 import store from "./store";
