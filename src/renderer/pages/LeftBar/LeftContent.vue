@@ -37,7 +37,12 @@ export default {
     return {
       activePath: "",
       online: [
-        { name: "search", title: "搜索", icon: "fa-search", path: "/search" },
+        {
+          name: "searchpage",
+          title: "搜索",
+          icon: "fa-search",
+          path: "/searchpage",
+        },
         {
           name: "learderboard",
           title: "排行榜",
@@ -55,7 +60,6 @@ export default {
     toDetail(path = "/") {
       this.$router.push(path);
       this.activePath = this.handlePath(path);
-      console.log(this.activePath);
     },
     handlePath(path) {
       return path.length > 1 ? path.substring(1, path.length) : "search";

@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-const SearchResult = () => import("../pages/RightContent/SearchResult.vue");
+const SearchPage = () => import("../pages/RightContent/SearchPage.vue");
 const PlaylistPanel = () => import("../components/PlaylistPanel.vue");
 
 Vue.use(Router);
@@ -10,13 +10,13 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "SearchResult",
-      component: SearchResult,
+      name: "SearchPage",
+      component: SearchPage,
     },
     {
-      path: "/search",
-      name: "SearchResult",
-      component: SearchResult,
+      path: "/searchpage",
+      name: "SearchPage",
+      component: SearchPage,
     },
     {
       path: "/playlist/:playlistId",

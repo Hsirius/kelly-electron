@@ -1,79 +1,52 @@
 <template>
-  <div class="box">
-    <section class="header">
-      <el-input
-        placeholder="请输入内容"
-        v-model="searchVal"
-        class="input-with-select"
-        @keyup.enter.native="search"
+  <div class="result-box">
+    <el-tabs v-model="defaultActive">
+      <el-tab-pane
+        v-for="(item, index) in dataSource"
+        :label="item[0]"
+        :name="String(index)"
+        :key="item[0]"
       >
-        <el-button
-          slot="append"
-          icon="el-icon-search"
-          @click="search"
-        ></el-button>
-      </el-input>
-      <div class="temp-box">
-        <span class="temp">{{ nowWeather.temp }}℃</span>
-        <img :src="imgUrl" alt="" />
-      </div>
-    </section>
+        <div v-for="song in item[1].songs" :key="song.id">
+          <span @dblclick="play(song)">{{ song.name }}</span>
+        </div>
+      </el-tab-pane>
+    </el-tabs>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import weatherPath from "../../service/weather/index";
+import { mapMutations } from "vuex";
 
 export default {
-  name: "search-result",
+  props: {
+    dataSource: { type: Array },
+  },
   data() {
     return {
-      searchVal: "",
-      nowWeather: {},
-      imgUrl: "",
+      defaultActive: "0",
     };
   },
-  mounted() {
-    this.getWeather();
-  },
   methods: {
-    getWeather() {
-      axios.get(weatherPath).then((res) => {
-        this.nowWeather = res.data.now;
-        this.imgUrl = `../../../static/weather/${this.nowWeather.icon}.png`;
+    ...mapMutations(["SET_MUSIC_URL", "SET_MUSIC_INFO"]),
+
+    play(data) {
+      this.SET_MUSIC_INFO(data);
+      console.log(data);
+      this.$musicApi.getSongUrl(data.vendor, data.id).then((res) => {
+        try {
+          this.SET_MUSIC_URL(res.data.url);
+        } catch (err) {
+          throw new Error(err);
+        }
       });
-    },
-    search() {
-      console.log(this.searchVal);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.box {
+.result-box {
   padding: 0 15px;
-  .header {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    width: 100%;
-    padding: 15px 0;
-    .input-with-select {
-      width: 40%;
-    }
-    .temp-box {
-      display: flex;
-      align-items: center;
-      margin-left: 60px;
-      .temp {
-        margin-right: 10px;
-      }
-      img {
-        width: 30px;
-      }
-    }
-  }
 }
 </style>

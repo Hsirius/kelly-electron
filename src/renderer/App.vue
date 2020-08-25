@@ -6,20 +6,17 @@
         <router-view></router-view>
       </div>
     </div>
-    <div class="bottom">
-      <div class="bot-content">
-        bottom
-      </div>
-    </div>
+    <bottom-player></bottom-player>
   </div>
 </template>
 
 <script>
 import LeftContent from "./pages/LeftBar/LeftContent";
+import BottomPlayer from "./components/BottomPlayer";
 
 export default {
   name: "kelly",
-  components: { LeftContent },
+  components: { LeftContent, BottomPlayer },
 };
 </script>
 
@@ -34,18 +31,6 @@ export default {
     }
     .right-bar {
       flex: 1;
-    }
-  }
-  .bottom {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    background: #fff;
-    border-top: 2px solid red;
-    .bot-content {
-      padding: 10px;
-      height: 40px;
     }
   }
 }

@@ -1,5 +1,9 @@
 import { app, BrowserWindow } from "electron"; // eslint-disable-line
 
+// 主进程 引入nodeAdapter，避免被打包进渲染进程 如无这个需求 可直接在渲染进程中引入
+import nodeAdapter from "flyio/src/adapter/node";
+global.nodeAdapter = nodeAdapter;
+
 /**
  * Set `__static` path to static files in production
  * https://simulatedgreg.gitbooks.io/electron-vue/content/en/using-static-assets.html
